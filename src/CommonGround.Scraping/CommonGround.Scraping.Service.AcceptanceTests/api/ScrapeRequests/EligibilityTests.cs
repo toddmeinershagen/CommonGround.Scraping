@@ -14,12 +14,12 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
     public class given_a_valid_non_existing_request_when_posting
     {
         private HttpResponseMessage _response;
-        private EligibilityScrapingRequest _request;
+        private EligibilityScrapeRequest _request;
 
         [OneTimeSetUp]
         public async Task Before()
         {
-            _request = new EligibilityScrapingRequest
+            _request = new EligibilityScrapeRequest
             {
                 CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
@@ -32,7 +32,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 ProviderId = "1154373843",
                 ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
             };
-            var content = new ObjectContent(typeof(EligibilityScrapingRequest), _request, new JsonMediaTypeFormatter());
+            var content = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());
             _response = await Server.Instance.HttpClient.PostAsync("api/ScrapeRequests/Eligibility", content);
         }
 
@@ -65,12 +65,12 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
     {
         private HttpResponseMessage _response1;
         private HttpResponseMessage _response2;
-        private EligibilityScrapingRequest _request;
+        private EligibilityScrapeRequest _request;
 
         [OneTimeSetUp]
         public async Task Before()
         {
-            _request = new EligibilityScrapingRequest
+            _request = new EligibilityScrapeRequest
             {
                 CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
@@ -84,10 +84,10 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
             };
 
-            var content1 = new ObjectContent(typeof(EligibilityScrapingRequest), _request, new JsonMediaTypeFormatter());
+            var content1 = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());
             _response1 = await Server.Instance.HttpClient.PostAsync("api/ScrapeRequests/Eligibility", content1);
 
-            var content2 = new ObjectContent(typeof(EligibilityScrapingRequest), _request, new JsonMediaTypeFormatter());
+            var content2 = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());
             _response2 = await Server.Instance.HttpClient.PostAsync("api/ScrapeRequests/Eligibility", content2);
         }
 
@@ -121,12 +121,12 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
     public class given_an_invalid_non_existing_request_when_posting
     {
         private HttpResponseMessage _response;
-        private EligibilityScrapingRequest _request;
+        private EligibilityScrapeRequest _request;
 
         [OneTimeSetUp]
         public async Task Before()
         {
-            _request = new EligibilityScrapingRequest
+            _request = new EligibilityScrapeRequest
             {
                 CorrelationId = Guid.Empty,
                 RequestExpiration = null,
@@ -139,7 +139,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 ProviderId = null,
                 ServiceTypes = null
             };
-            var content = new ObjectContent(typeof(EligibilityScrapingRequest), _request, new JsonMediaTypeFormatter());
+            var content = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());
             _response = await Server.Instance.HttpClient.PostAsync("api/ScrapeRequests/Eligibility", content);
         }
 

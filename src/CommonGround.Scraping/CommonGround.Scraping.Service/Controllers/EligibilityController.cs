@@ -16,7 +16,7 @@ namespace CommonGround.Scraping.Service.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [Route]
-        public IHttpActionResult Post(EligibilityScrapingRequest request)
+        public IHttpActionResult Post(EligibilityScrapeRequest request)
         {
             var requestId = Guid.NewGuid();
             return Created($"{Request.RequestUri}/{requestId}", request);

@@ -9,12 +9,12 @@ using NUnit.Framework;
 namespace CommonGround.Scraping.Service.UnitTests.Models
 {
     [TestFixture]
-    public class EligibilityScrapingRequestTests
+    public class EligibilityScrapeRequestTests
     {
         [Test]
         public void given_valid_request_when_validating_should_return_no_errors()
         {
-            var request = new EligibilityScrapingRequest
+            var request = new EligibilityScrapeRequest
             {
                 CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
@@ -37,7 +37,7 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
         [Test]
         public void given_invalid_request_when_validating_should_return_errors()
         {
-            var request = new EligibilityScrapingRequest
+            var request = new EligibilityScrapeRequest
             {
                 CorrelationId = Guid.Empty,
                 RequestExpiration = null,

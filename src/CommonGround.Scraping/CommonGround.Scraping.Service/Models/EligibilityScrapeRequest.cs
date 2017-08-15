@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CommonGround.Scraping.Service.Models
 {
-    public class EligibilityScrapingRequest
+    public class EligibilityScrapeRequest
     {
         [NonDefaultRequired]
         public Guid CorrelationId { get; set; }
