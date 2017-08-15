@@ -6,7 +6,7 @@ namespace CommonGround.Scraping.Service.Models
     public class EligibilityScrapingRequest
     {
         [Required]
-        public Guid RequestId { get; set; }
+        public Guid CorrelationId { get; set; }
         public DateTimeOffset? RequestExpiration { get; set; }
         [Required]
         public Guid ApplicationId { get; set; }
