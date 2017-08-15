@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommonGround.Scraping.Service.Models;
 using FluentAssertions;
 using NUnit.Framework;
+using Microservices.Http.Models;
 
 namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
 {
@@ -71,7 +72,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         {
             _request = new EligibilityScrapingRequest
             {
-                CorrelationId = Guid.Empty,
+                CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
                 ApplicationId = Guid.NewGuid(),
                 ResponseAddress = "http://mylocation.nthrive.com",
@@ -91,7 +92,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         }
 
         [Test]
-        public void should_return_ok_status_for_second_request()
+        public void should_return_created_status_for_second_request()
         {
             _response2.StatusCode
                 .Should().Be(HttpStatusCode.Created);
@@ -113,6 +114,48 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
             var id2 = location2.Substring(location2.Length - guidLength, guidLength);
 
             new Guid(id2).Should().NotBe(new Guid(id1));
+        }
+    }
+
+    [TestFixture]
+    public class given_an_invalid_non_existing_request_when_posting
+    {
+        private HttpResponseMessage _response;
+        private EligibilityScrapingRequest _request;
+
+        [OneTimeSetUp]
+        public async Task Before()
+        {
+            _request = new EligibilityScrapingRequest
+            {
+                CorrelationId = Guid.Empty,
+                RequestExpiration = null,
+                ApplicationId = Guid.Empty,
+                ResponseAddress = "todd@meinershagen.net",
+                PlanCode = null,
+                PlanDescription = null,
+                SubscriberId = null,
+                PatientDateOfBirth = DateTime.MinValue,
+                ProviderId = null,
+                ServiceTypes = null
+            };
+            var content = new ObjectContent(typeof(EligibilityScrapingRequest), _request, new JsonMediaTypeFormatter());
+            _response = await Server.Instance.HttpClient.PostAsync("api/ScrapeRequests/Eligibility", content);
+        }
+
+        [Test]
+        public void should_return_badrequest_status()
+        {
+            _response.StatusCode
+                .Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Test]
+        public async Task should_return_error_messages_for_invalid_request()
+        {
+            var error = await _response.Content.ReadAsAsync<Error>();
+            error.Message.Should().Be("The request is invalid.");
+            error.ModelState.Count.Should().BeGreaterThan(1);
         }
     }
 }

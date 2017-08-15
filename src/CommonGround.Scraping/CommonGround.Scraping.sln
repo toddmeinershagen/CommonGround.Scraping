@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonGround.Scraping.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonGround.Scraping.Service.AcceptanceTests", "CommonGround.Scraping.Service.AcceptanceTests\CommonGround.Scraping.Service.AcceptanceTests.csproj", "{64ABDAE9-E807-470F-A321-F06BA2403681}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonGround.Scraping.Service.UnitTests", "CommonGround.Scraping.Service.UnitTests\CommonGround.Scraping.Service.UnitTests.csproj", "{3F04AA07-F9DA-4B22-821B-B1F200268F7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{64ABDAE9-E807-470F-A321-F06BA2403681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64ABDAE9-E807-470F-A321-F06BA2403681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64ABDAE9-E807-470F-A321-F06BA2403681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F04AA07-F9DA-4B22-821B-B1F200268F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F04AA07-F9DA-4B22-821B-B1F200268F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F04AA07-F9DA-4B22-821B-B1F200268F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F04AA07-F9DA-4B22-821B-B1F200268F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

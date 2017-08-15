@@ -5,10 +5,10 @@ namespace CommonGround.Scraping.Service.Models
 {
     public class EligibilityScrapingRequest
     {
-        [Required]
+        [NonDefaultRequired]
         public Guid CorrelationId { get; set; }
         public DateTimeOffset? RequestExpiration { get; set; }
-        [Required]
+        [NonDefaultRequired]
         public Guid ApplicationId { get; set; }
         [Url]
         public string ResponseAddress { get; set; }
@@ -18,7 +18,7 @@ namespace CommonGround.Scraping.Service.Models
         public string PlanDescription { get; set; }
         [Required]
         public string SubscriberId { get; set; }
-        [Required]
+        [NonDefaultRequired]
         public DateTime PatientDateOfBirth { get; set; }
         [Required]
         public string ProviderId { get; set; }

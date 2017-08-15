@@ -7,6 +7,7 @@ namespace CommonGround.Scraping.Service
         public static void Register(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
+            config.AddErrorHandling();
         }
     }
 }
