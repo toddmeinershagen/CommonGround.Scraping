@@ -25,6 +25,7 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
                 SubscriberId = "ZCL87410574",
                 PatientDateOfBirth = new DateTime(1979, 12, 8),
                 ProviderId = "1154373843",
+                ServiceDate = DateTime.Now,
                 ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
             };
 
@@ -48,6 +49,7 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
                 SubscriberId = null,
                 PatientDateOfBirth = DateTime.MinValue,
                 ProviderId = null,
+                ServiceDate = DateTime.MinValue,
                 ServiceTypes = null
             };
 
@@ -67,6 +69,7 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
             messages.Contains("The SubscriberId field is required.");
             messages.Contains("The PatientDateOfBirth field requires a non-default value.");
             messages.Contains("The ProviderId field is required.");
+            messages.Contains("The ServiceDate field requires a non-default value.");
             messages.Contains("The ServiceTypes field is required.");
         }
     }

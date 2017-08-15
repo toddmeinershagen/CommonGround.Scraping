@@ -30,6 +30,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 SubscriberId = "ZCL87410574",
                 PatientDateOfBirth = new DateTime(1979, 12, 8),
                 ProviderId = "1154373843",
+                ServiceDate = DateTime.Now,
                 ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
             };
             var content = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());
@@ -81,6 +82,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 SubscriberId = "ZCL87410574",
                 PatientDateOfBirth = new DateTime(1979, 12, 8),
                 ProviderId = "1154373843",
+                ServiceDate = DateTime.Now,
                 ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
             };
 
@@ -137,6 +139,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
                 SubscriberId = null,
                 PatientDateOfBirth = DateTime.MinValue,
                 ProviderId = null,
+                ServiceDate = DateTime.MinValue,
                 ServiceTypes = null
             };
             var content = new ObjectContent(typeof(EligibilityScrapeRequest), _request, new JsonMediaTypeFormatter());

@@ -22,6 +22,8 @@ namespace CommonGround.Scraping.Service.Models
         public DateTime PatientDateOfBirth { get; set; }
         [Required]
         public string ProviderId { get; set; }
+        [NonDefaultRequired]
+        public DateTime ServiceDate { get; set; }
         [Required]
         public ServiceType[] ServiceTypes { get; set; }
     }
