@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Models\DataAnnotationsValidator.cs" />
     <Compile Include="Models\EligibilityScrapeRequestTests.cs" />
+    <Compile Include="Models\ServiceTypeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

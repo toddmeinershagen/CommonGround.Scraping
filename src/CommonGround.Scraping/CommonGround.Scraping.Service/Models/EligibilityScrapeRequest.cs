@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace CommonGround.Scraping.Service.Models
 {
@@ -25,6 +26,7 @@ namespace CommonGround.Scraping.Service.Models
         [NonDefaultRequired]
         public DateTime ServiceDate { get; set; }
         [Required]
+        [ValidateObject]
         public ServiceType[] ServiceTypes { get; set; }
     }
 }

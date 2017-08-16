@@ -14,25 +14,12 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
         [Test]
         public void given_valid_request_when_validating_should_return_no_errors()
         {
-            var request = new EligibilityScrapeRequest
-            {
-                CorrelationId = Guid.NewGuid(),
-                RequestExpiration = null,
-                ApplicationId = Guid.NewGuid(),
-                ResponseAddress = "http://mylocation.nthrive.com",
-                PlanCode = "BCHP100",
-                PlanDescription = "BlueChoice HealthPlan",
-                SubscriberId = "ZCL87410574",
-                PatientDateOfBirth = new DateTime(1979, 12, 8),
-                ProviderId = "1154373843",
-                ServiceDate = DateTime.Now,
-                ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
-            };
+            var request = GetValidRequest();
 
             ICollection<ValidationResult> results;
             var validator = new DataAnnotationsValidator();
             validator.TryValidate(request, out results).Should().BeTrue();
-            results.Count.Should().Be(0);
+            results.Should().BeEmpty();
         }
 
         [Test]
@@ -50,7 +37,7 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
                 PatientDateOfBirth = DateTime.MinValue,
                 ProviderId = null,
                 ServiceDate = DateTime.MinValue,
-                ServiceTypes = null
+                ServiceTypes = new [] { new ServiceType { Code = "CODE", Description = "DESCRIPTION"}, new ServiceType() { Code = null, Description = string.Empty} }
             };
 
             ICollection<ValidationResult> results;
@@ -70,7 +57,56 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
             messages.Contains("The PatientDateOfBirth field requires a non-default value.");
             messages.Contains("The ProviderId field is required.");
             messages.Contains("The ServiceDate field requires a non-default value.");
-            messages.Contains("The ServiceTypes field is required.");
+            messages.Contains("The ServiceTypes field is not valid.");
+        }
+
+        [Test]
+        public void given_invalid_service_type_when_validating_should_return_errors()
+        {
+            var request = GetValidRequest(r =>
+            {
+                r.ServiceTypes = new[] {new ServiceType {Code = null, Description = string.Empty}};
+                return r;
+            });
+
+            ICollection<ValidationResult> results;
+            var validator = new DataAnnotationsValidator();
+            validator.TryValidate(request, out results).Should().BeFalse();
+
+
+            results.Count.Should().Be(1);
+            var messages = results.Select(r => r.ErrorMessage);
+
+            messages.Contains("The Code field is required.");
+            messages.Contains("The Description field is required.");
+        }
+
+        private EligibilityScrapeRequest GetValidRequest()
+        {
+            return GetValidRequest(request => request);
+        }
+
+        private EligibilityScrapeRequest GetValidRequest(
+            Func<EligibilityScrapeRequest, EligibilityScrapeRequest> applyOverrides)
+        {
+            var request = new EligibilityScrapeRequest
+            {
+                CorrelationId = Guid.NewGuid(),
+                RequestExpiration = null,
+                ApplicationId = Guid.NewGuid(),
+                ResponseAddress = "http://mylocation.nthrive.com",
+                PlanCode = "BCHP100",
+                PlanDescription = "BlueChoice HealthPlan",
+                SubscriberId = "ZCL87410574",
+                PatientDateOfBirth = new DateTime(1979, 12, 8),
+                ProviderId = "1154373843",
+                ServiceDate = DateTime.Now,
+                ServiceTypes = new[] { new ServiceType { Code = "30", Description = "General" } }
+            };
+
+            applyOverrides(request);
+
+            return request;
         }
     }
 }
