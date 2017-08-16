@@ -21,7 +21,6 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         {
             _request = new EligibilityScrapeRequest
             {
-                CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
                 ApplicationId = Guid.NewGuid(),
                 ResponseAddress = "http://mylocation.nthrive.com",
@@ -45,7 +44,7 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         }
 
         [Test]
-        public void should_return_the_location_with_an_id_that_does_not_match_the_correlation_id()
+        public void should_return_the_location_with_an_id()
         {
             var location = _response.Headers
                 .Location.OriginalString;
@@ -56,8 +55,6 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
             var id = location.Substring(location.Length - guidLength, guidLength);
 
             id.IsGuid().Should().BeTrue();
-
-            new Guid(id).Should().NotBe(_request.CorrelationId);
         }
     }
 
@@ -73,7 +70,6 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         {
             _request = new EligibilityScrapeRequest
             {
-                CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
                 ApplicationId = Guid.NewGuid(),
                 ResponseAddress = "http://mylocation.nthrive.com",
@@ -130,7 +126,6 @@ namespace CommonGround.Scraping.Service.AcceptanceTests.api.ScrapeRequests
         {
             _request = new EligibilityScrapeRequest
             {
-                CorrelationId = Guid.Empty,
                 RequestExpiration = null,
                 ApplicationId = Guid.Empty,
                 ResponseAddress = "todd@meinershagen.net",

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace CommonGround.Scraping.Service.Models
 {
     public class EligibilityScrapeRequest
     {
-        [NonDefaultRequired]
-        public Guid CorrelationId { get; set; }
         public DateTimeOffset? RequestExpiration { get; set; }
         [NonDefaultRequired]
         public Guid ApplicationId { get; set; }

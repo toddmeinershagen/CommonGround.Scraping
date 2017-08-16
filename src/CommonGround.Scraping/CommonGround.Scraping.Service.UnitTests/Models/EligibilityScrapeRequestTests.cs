@@ -27,7 +27,6 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
         {
             var request = new EligibilityScrapeRequest
             {
-                CorrelationId = Guid.Empty,
                 RequestExpiration = null,
                 ApplicationId = Guid.Empty,
                 ResponseAddress = "todd@meinershagen.net",
@@ -91,7 +90,6 @@ namespace CommonGround.Scraping.Service.UnitTests.Models
         {
             var request = new EligibilityScrapeRequest
             {
-                CorrelationId = Guid.NewGuid(),
                 RequestExpiration = null,
                 ApplicationId = Guid.NewGuid(),
                 ResponseAddress = "http://mylocation.nthrive.com",
