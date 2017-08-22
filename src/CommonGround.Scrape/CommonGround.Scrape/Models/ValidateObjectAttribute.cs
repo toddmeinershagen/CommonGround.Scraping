@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CommonGround.Scrape.Service.Models
+namespace CommonGround.Scrape.Models
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class ValidateObjectAttribute : ValidationAttribute

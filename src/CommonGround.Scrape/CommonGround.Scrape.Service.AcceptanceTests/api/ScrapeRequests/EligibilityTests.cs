@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading.Tasks;
-using CommonGround.Scrape.Service.Models;
+using CommonGround.Scrape.Models;
 using FluentAssertions;
 using Microservices.Http.Models;
 using NUnit.Framework;

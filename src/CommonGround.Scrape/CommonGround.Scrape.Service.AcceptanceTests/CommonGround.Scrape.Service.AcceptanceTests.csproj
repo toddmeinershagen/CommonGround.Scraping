@@ -121,6 +121,10 @@
       <Project>{73C5A489-D361-4466-A227-4BBEC03A2E9D}</Project>
       <Name>CommonGround.Scrape.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonGround.Scrape\CommonGround.Scrape.csproj">
+      <Project>{2E3D0F48-91C7-44DF-A04F-82F2D6625CB8}</Project>
+      <Name>CommonGround.Scrape</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

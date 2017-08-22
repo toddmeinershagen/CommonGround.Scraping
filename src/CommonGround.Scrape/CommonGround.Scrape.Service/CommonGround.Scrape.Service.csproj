@@ -124,11 +124,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CompositeValidationResult.cs" />
-    <Compile Include="Models\EligibilityScrapeRequest.cs" />
-    <Compile Include="Models\NonDefaultRequired.cs" />
-    <Compile Include="Models\ServiceType.cs" />
-    <Compile Include="Models\ValidateObjectAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -143,6 +138,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonGround.Scrape\CommonGround.Scrape.csproj">
+      <Project>{2e3d0f48-91c7-44df-a04f-82f2d6625cb8}</Project>
+      <Name>CommonGround.Scrape</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CommonGround.Scrape.Service.Models
+namespace CommonGround.Scrape.Models
 {
     public class ServiceType
     {

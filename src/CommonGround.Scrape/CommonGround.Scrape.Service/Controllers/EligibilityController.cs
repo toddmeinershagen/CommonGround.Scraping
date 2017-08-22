@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Http;
-using CommonGround.Scrape.Service.Models;
+using CommonGround.Scrape.Models;
 
 namespace CommonGround.Scrape.Service.Controllers
 {
@@ -19,6 +19,10 @@ namespace CommonGround.Scrape.Service.Controllers
         public IHttpActionResult Post(EligibilityScrapeRequest request)
         {
             var requestId = Guid.NewGuid();
+
+            var runner = new EligibilityRunner();
+            runner.Run(request);
+
             return Created($"{Request.RequestUri}/{requestId}", request);
         }
     }

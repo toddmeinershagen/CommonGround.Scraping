@@ -68,6 +68,10 @@
       <Project>{73c5a489-d361-4466-a227-4bbec03a2e9d}</Project>
       <Name>CommonGround.Scrape.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommonGround.Scrape\CommonGround.Scrape.csproj">
+      <Project>{2E3D0F48-91C7-44DF-A04F-82F2D6625CB8}</Project>
+      <Name>CommonGround.Scrape</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

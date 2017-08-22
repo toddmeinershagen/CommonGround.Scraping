@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using CommonGround.Scrape.Service.Models;
+using CommonGround.Scrape.Models;
 using FluentAssertions;
 using NUnit.Framework;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CommonGround.Scrape.Service.Models
+namespace CommonGround.Scrape.Models
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
     public class NonDefaultRequired : ValidationAttribute
